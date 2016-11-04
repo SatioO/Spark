@@ -1,3 +1,5 @@
+## Running Spark 2.0.0+ in Standalone mode
+
 ## For Mac Users 
 
 Try Installing with Brew, this makes the life easy.
@@ -17,3 +19,35 @@ Try Installing with Brew, this makes the life easy.
       
 Success: Spark got installed. 
 run pyspark on command line and you should see the spark running 
+
+## For Windows Users (Windows7/Windows10)
+## Source::http://nishutayaltech.blogspot.in/2015/04/how-to-run-apache-spark-on-windows7-in.html
+
+1. Java 
+- Download & Install Java (latest version) through https://www.java.com/en/download/
+- Add JAVA_HOME Path in System Variables
+- Type "java -version" in command prompt to check whether it is installed properly or not
+
+2. Scala
+- Download and Install Scala (latest version) through http://www.scala-lang.org/download/
+- Directly add <Scala location>\bin to the Path
+- Type "scala -version" in command prompt to check whether it is installed properly or not
+
+3. Spark
+- We'll be using Spark prebuilt package for Hadoop 2.6
+- Download Spark through this link:: https://spark.apache.org/downloads.html
+- Extract the files to a folder (it can be your choice of folder)
+- Add the folder path to SPARK_HOME (eg: SPARK_HOME = D:\Hadoop\spark-2.0.1-bin-hadoop2.6) to System Variables as "%SPARK_HOME%\bin"
+- We need to download the 'winutils.exe' file and place it in a location (Link to download: https://github.com/steveloughran/winutils, clone the entire folder in your local system and unzip)
+- Provide the path for HADOOP_HOME and add to system variables as "%HADOOP_HOME%\bin"
+- Run "spark-shell" in the command prompt. In the Spark Shell, you would get the scala shell activate (scala>) which means that the installation is correctly done
+- You can run various shells which includes the ones for Python (pyspark) and R Programming (SparkR) which will be helpful for Data Science Related tasks
+
+4. Spark API and connecting it with Jupyter Notebooks
+- You can run Python API on Spark by typing "pyspark" in the command prompt
+- You'll get a message --> Using Python version 2.7.11 (default, Feb 16 2016 09:58:36) SparkSession available as 'spark'. which confirms the pyspark shell is running properly
+- To connect it to the Jupyter Notebooks we need to set a few Paths in our Windows environment
+	- PYSPARK_DRIVER_PYTHON = ipython
+	- PYSPARK_DRIVER_PYTHON_OPTS = notebook
+- Run the pyspark command once again in the command prompt and you'll be connected directly to the Jupyter notebooks (spark context would be automatically available through this)
+- We can always create and import the pyspark module & sqlContext for our needs
